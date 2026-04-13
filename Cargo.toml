@@ -1,0 +1,9 @@
+[package]
+name = "verus-metamath-zero"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+mm0b_parser = { path = "../mm0/mm0-rs/components/mm0b_parser" }
+mm0_util = { path = "../mm0/mm0-rs/components/mm0_util", default-features = false }
+byteorder = "1.5"

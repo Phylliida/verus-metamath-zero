@@ -1,0 +1,27 @@
+-- Minimal propositional logic for RustProof Phase 0 spike.
+-- Matches the tutorial 02-mm0-intro.mm0 exactly.
+
+delimiter $ ( ~ $  $ ) $;
+
+provable sort wff;
+
+--| implication
+term imp: wff > wff > wff;
+infixr imp: $->$ prec 25;
+
+--| negation
+term not: wff > wff;
+prefix not: $~$ prec 100;
+
+-- Lukasiewicz axiom system for propositional calculus
+
+axiom ax_1 (a b: wff): $ a -> b -> a $;
+
+axiom ax_2 (a b c: wff): $ (a -> b -> c) -> (a -> b) -> (a -> c) $;
+
+axiom ax_3 (a b: wff): $ (~a -> ~b) -> (b -> a) $;
+
+axiom ax_mp (a b: wff): $ a -> b $ > $ a $ > $ b $;
+
+-- Phase 0 target: prove a -> a
+theorem id (a: wff): $ a -> a $;
